@@ -16,7 +16,7 @@ WORKDIR /opt/
 
 RUN \
 curl http://www.pmease.com/downloads -o qbdownload.html; \
-wget `cat qbdownload.html | grep "zip" | sed 's/^.*href=\"//g' | sed 's/\"><i.*$//g' | sed 's/amp\;//g' | sed 's/^/http:\/\/www.pmease.com/'` -O `cat qbdownload.html | grep "zip" | sed 's/^.*file=//g' | sed 's/\&amp.*$//g'`
+wget `cat qbdownload.html | grep "zip" | sed 's/^.*href=\"//g' | sed 's/\"><i.*$//g' | sed 's/amp\;//g' | sed 's/^/http:\/\/www.pmease.com/'` -O `cat qbdownload.html | grep "zip" | sed 's/^.*file=//g' | sed 's/\&amp.*$//g'` ; \
 unzip `cat qbdownload.html | grep "zip" | sed 's/^.*file=//g' | sed 's/\&amp.*$//g'`;\
 rm -f `cat qbdownload.html | grep "zip" | sed 's/^.*file=//g' | sed 's/\&amp.*$//g'`;\
 rm -f qbdownload.html;
