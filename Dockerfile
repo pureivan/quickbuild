@@ -4,9 +4,9 @@ MAINTAINER pureivan
 # Download and Install jre
 RUN yum update -y && \
 yum install -y wget && \
-wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/7u80-b15/jre-7u80-linux-x64.rpm" && \
-yum localinstall -y /jre-7u80-linux-x64.rpm && \
-rm -f /jre-7u80-linux-x64.rpm && \
+curl --progress-bar --connect-timeout 30 --junk-session-cookies --insecure --location --max-time 3600 --retry 3 --retry-delay 60 --header "Cookie: oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u91-b14/jre-8u91-linux-x64.rpm" --output "jre-8u91-linux-x64.rpm" && \
+yum localinstall -y /jre-8u91-linux-x64.rpm && \
+rm -f /jre-8u91-linux-x64.rpm && \
 yum clean all
 
 # Download and Install quickbuild
