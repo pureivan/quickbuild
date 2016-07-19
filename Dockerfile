@@ -22,4 +22,4 @@ rm -f `cat qbdownload.html | grep "zip" | sed 's/^.*file=//g' | sed 's/\&amp.*$/
 rm -f qbdownload.html;
 
 EXPOSE 8810
-ENTRYPOINT `ls /opt | grep 'quickbuild'`/server.sh console
+ENTRYPOINT `ls /opt | grep 'quickbuild'`/bin/server.sh console
