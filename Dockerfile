@@ -14,11 +14,13 @@ curl https://www.pmease.com/quickbuild/downloads -o qbdownload.html; \
 wget `cat qbdownload.html | grep "zip" | sed 's/^.*href=\"//g' | sed 's/\"><i.*$//g' | sed 's/amp\;//g' | sed 's/^/http:\/\/www.pmease.com/'` -O `cat qbdownload.html | grep "zip" | sed 's/^.*href=\"//g' | sed 's/\"><i.*$//g' | sed 's/^.*\///g'` ; \
 unzip `cat qbdownload.html | grep "zip" | sed 's/^.*href=\"//g' | sed 's/\"><i.*$//g' | sed 's/^.*\///g'`;\
 rm -f `cat qbdownload.html | grep "zip" | sed 's/^.*href=\"//g' | sed 's/\"><i.*$//g' | sed 's/^.*\///g'`;\
+ln -s `cat qbdownload.html | grep "zip" | sed 's/^.*href=\"//g' | sed 's/\"><i.*$//g' | sed 's/amp\;//g'` quickbuild;\
 apk del curl; \
 apk del ca-certificates; \
 apk del openssl; \
 rm -f qbdownload.html;\
-rm -rf /var/cache/apk/*;
+rm -rf /var/cache/apk/*;\
+mkdir qbhome;
 
 EXPOSE 8810
-ENTRYPOINT `ls /opt | grep 'quickbuild'`/bin/server.sh console
+ENTRYPOINT /opt/quickbuild/bin/server.sh console
