@@ -31,4 +31,4 @@ rm -rf /var/cache/apk/*;\
 mkdir qbhome;
 
 EXPOSE 8810
-ENTRYPOINT /opt/quickbuild/bin/server.sh console
+CMD /opt/quickbuild/bin/server.sh console
