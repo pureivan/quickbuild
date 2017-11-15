@@ -1,4 +1,4 @@
-FROM jeanblanchard/java:jre-8u131
+FROM jeanblanchard/java:jre-8u151
 MAINTAINER pureivan
 
 # set timezone
