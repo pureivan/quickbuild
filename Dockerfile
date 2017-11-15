@@ -11,7 +11,7 @@ ln -sf /usr/share/zoneinfo/${TIME_ZONE} /etc/localtime;
 
 # Download and Install 
 RUN \
-apk add --update --no-cache curl python py-pip;\
+apk add --update --no-cache curl python py-pip git;\
 pip install supervisor;\
 apk update && apk add --no-cache ca-certificates && update-ca-certificates && apk add --no-cache openssl;
 
@@ -24,9 +24,6 @@ wget `cat qbdownload.html | grep "zip" | sed 's/^.*href=\"//g' | sed 's/\"><i.*$
 unzip `cat qbdownload.html | grep "zip" | sed 's/^.*href=\"//g' | sed 's/\"><i.*$//g' | sed 's/^.*\///g'`;\
 rm -f `cat qbdownload.html | grep "zip" | sed 's/^.*href=\"//g' | sed 's/\"><i.*$//g' | sed 's/^.*\///g'`;\
 ln -s `cat qbdownload.html | grep "zip" | sed 's/^.*href=\"//g' | sed 's/\"><i.*$//g' | sed 's/^.*\///g' | sed 's/\.zip//g'` quickbuild;\
-apk del curl; \
-apk del ca-certificates; \
-apk del openssl; \
 rm -f qbdownload.html;\
 rm -rf /var/cache/apk/*;\
 mkdir qbhome;
