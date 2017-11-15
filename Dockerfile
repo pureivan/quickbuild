@@ -11,7 +11,7 @@ ln -sf /usr/share/zoneinfo/${TIME_ZONE} /etc/localtime;
 
 # Download and Install 
 RUN \
-apk add --update --no-cache curl python py-pip git subversion;\
+apk add --update --no-cache curl python py-pip git subversion rsync;\
 pip install supervisor;\
 apk update && apk add --no-cache ca-certificates && update-ca-certificates && apk add --no-cache openssl;
 
