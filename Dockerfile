@@ -11,8 +11,9 @@ ln -sf /usr/share/zoneinfo/${TIME_ZONE} /etc/localtime;
 
 # Download and Install 
 RUN \
-apk add --update curl;\
-apk update && apk add ca-certificates && update-ca-certificates && apk add openssl;
+apk add --update --no-cache curl python py-pip;\
+pip install supervisor;\
+apk update && apk add --no-cache ca-certificates && update-ca-certificates && apk add --no-cache openssl;
 
 # Download and Install quickbuild
 WORKDIR /opt/
